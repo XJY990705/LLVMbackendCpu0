@@ -10,6 +10,8 @@ tablegen(LLVM Cpu0GenRegisterInfo.inc -gen-register-info)
 tablegen(LLVM Cpu0GenInstrInfo.inc -gen-instr-info)
 tablegen(LLVM Cpu0GenSubtargetInfo.inc -gen-subtarget)
 tablegen(LLVM Cpu0GenMCPseudoLowering.inc -gen-pseudo-lowering)
+tablegen(LLVM Cpu0GenDAGISel.inc -gen-dag-isel)
+tablegen(LLVM Cpu0GenCallingConv.inc -gen-callingconv)
 
 # Cpu0CommonTableGen must be defined
 add_public_tablegen_target(Cpu0CommonTableGen)
@@ -17,6 +19,17 @@ add_public_tablegen_target(Cpu0CommonTableGen)
 # Cpu0CodeGen should match with LLVMBuild.txt Cpu0CodeGen
 add_llvm_target(Cpu0CodeGen
   Cpu0TargetMachine.cpp
+  Cpu0InstrInfo.cpp
+  Cpu0ISelLowering.cpp
+  Cpu0MachineFunctionInfo.cpp
+  Cpu0RegisterInfo.cpp
+  Cpu0FrameLowering.cpp
+  Cpu0SEFrameLowering.cpp
+  Cpu0SEInstrInfo.cpp
+  Cpu0SEISelLowering.cpp
+  Cpu0SERegisterInfo.cpp
+  Cpu0Subtarget.cpp
+  Cpu0TargetObjectFile.cpp
 
   LINK_COMPONENTS
   Analysis

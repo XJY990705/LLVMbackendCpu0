@@ -23,6 +23,15 @@ def Cpu0Ret : SDNode<"Cpu0ISD::Ret", SDTNone,
                      [SDNPHasChain, SDNPOptInGlue, SDNPVariadic]>;
 
 //===----------------------------------------------------------------------===//
+// Cpu0 Instruction Predicate Definitions.
+//===----------------------------------------------------------------------===//
+def EnableOverflow  : Predicate<"Subtarget->enableOverflow()">;
+def DisableOverflow : Predicate<"Subtarget->disableOverflow()">;
+
+def HasCmp          : Predicate<"Subtarget->hasCmp()">;
+def HasSlt          : Predicate<"Subtarget->hasSlt()">;
+
+//===----------------------------------------------------------------------===//
 // Instruction format superclass
 //===----------------------------------------------------------------------===//
 
